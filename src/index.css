@@ -1,0 +1,173 @@
+body {
+	font-family: 'Arial', sans-serif;
+	background-color: #f4f4f4;
+	margin: 0;
+	padding: 0;
+}
+
+h1,
+h2,
+h3 {
+	color: #333;
+}
+
+.container {
+	width: 80%;
+	margin: 0 auto;
+}
+
+button {
+	padding: 10px 15px;
+	border: none;
+	background-color: #007bff;
+	color: white;
+	cursor: pointer;
+	font-size: 16px;
+	border-radius: 5px;
+	transition: background-color 0.3s;
+}
+
+button:hover {
+	background-color: #0056b3;
+}
+
+.header {
+	background-color: #007bff;
+	padding: 15px;
+	color: white;
+	text-align: center;
+}
+
+.header nav ul {
+	list-style: none;
+	padding: 0;
+}
+
+.header nav ul li {
+	display: inline;
+	margin: 0 15px;
+}
+
+.header nav ul li a {
+	color: white;
+	text-decoration: none;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.header nav ul li a:hover {
+	text-decoration: underline;
+}
+
+.product-card,
+.cart-item {
+	background-color: white;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	padding: 15px;
+	margin: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transition: transform 0.3s ease;
+}
+
+.product-card:hover,
+.cart-item:hover {
+	transform: scale(1.05);
+}
+
+.product-card img,
+.cart-item img {
+	max-width: 200px;
+	max-height: 200px;
+	object-fit: contain;
+	border-radius: 8px;
+	margin-bottom: 10px;
+}
+
+.product-card h3,
+.cart-item h3 {
+	font-size: 18px;
+	margin: 10px 0;
+}
+
+.product-list,
+.cart-items,
+.liked-products {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.product-card,
+.cart-item {
+	width: 30%;
+	box-sizing: border-box;
+}
+
+.liked-products p,
+.cart-summary h2 {
+	font-size: 20px;
+	font-weight: bold;
+	color: #28a745;
+}
+
+.liked-products p {
+	color: #888;
+}
+
+.cart-summary {
+	text-align: right;
+	font-size: 20px;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+.cart-item input {
+	width: 50px;
+	padding: 5px;
+	text-align: center;
+}
+
+.cart-item button {
+	background-color: #dc3545;
+	margin-top: 10px;
+	width: 100%;
+}
+
+.cart-item button:hover {
+	background-color: #c82333;
+}
+
+.add-product-form {
+	display: flex;
+	flex-direction: column;
+	max-width: 500px;
+	margin: 0 auto;
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.add-product-form input {
+	padding: 10px;
+	margin-bottom: 15px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	font-size: 16px;
+}
+
+.add-product-form button {
+	background-color: #007bff;
+	color: white;
+	padding: 10px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.add-product-form button:hover {
+	background-color: #0056b3;
+}
