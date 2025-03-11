@@ -171,3 +171,37 @@ button:hover {
 .add-product-form button:hover {
 	background-color: #0056b3;
 }
+
+.container {
+	width: 100%;
+	max-width: 400px;
+	margin: 0 auto;
+	padding: 20px;
+	text-align: center;
+}
+
+.title {
+	font-size: 2rem;
+	margin-bottom: 20px;
+}
+
+.input-field {
+	width: 100%;
+	padding: 10px;
+	margin: 10px 0;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.login-button {
+	padding: 10px 20px;
+	background-color: #28a745;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.login-button:hover {
+	background-color: #218838;
+}

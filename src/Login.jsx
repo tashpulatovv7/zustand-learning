@@ -22,7 +22,7 @@ const LoginPage = () => {
 	return (
 		<div className='container'>
 			<h1 className='title'>Login</h1>
-			<form onSubmit={handleLogin}>
+			<form onSubmit={handleLogin} className='login-form'>
 				<input
 					type='text'
 					placeholder='Username'
