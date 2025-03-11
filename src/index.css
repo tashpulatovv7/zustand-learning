@@ -193,15 +193,144 @@ button:hover {
 	border-radius: 5px;
 }
 
-.login-button {
-	padding: 10px 20px;
-	background-color: #28a745;
+.login-page {
+	margin-top: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	backdrop-filter: blur(5px);
+}
+
+.login-container {
+	background: white;
+	border-radius: 8px;
+	padding: 2rem;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	max-width: 400px;
+	text-align: center;
+}
+
+h1 {
+	margin-bottom: 1.5rem;
+	font-size: 2rem;
+	color: #333;
+}
+
+.login-form {
+	display: flex;
+	flex-direction: column;
+}
+
+.input-group {
+	margin-bottom: 1.2rem;
+	text-align: left;
+}
+
+label {
+	font-size: 1rem;
+	color: #555;
+}
+
+input {
+	width: 100%;
+	padding: 0.8rem;
+	margin-top: 0.5rem;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	font-size: 1rem;
+}
+
+input:focus {
+	border-color: #6a11cb;
+	outline: none;
+}
+
+button {
+	background-color: #2575fc;
+	color: white;
+	padding: 1rem;
+	border: none;
+	border-radius: 4px;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	margin-top: 1.2rem;
+}
+
+button:hover {
+	background-color: #6a11cb;
+}
+
+button:disabled {
+	background-color: #bbb;
+	cursor: not-allowed;
+}
+
+.error-message {
+	color: red;
+	margin-top: 1rem;
+}
+
+.products-page {
+	padding: 20px;
+}
+
+.product-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 20px;
+}
+
+.product-card {
+	background: #fff;
+	padding: 15px;
+	width: 200px;
+	border-radius: 8px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+	width: 100%;
+	height: auto;
+	border-radius: 8px;
+}
+
+.product-card h3 {
+	font-size: 18px;
+	margin: 10px 0;
+}
+
+.product-card p {
+	font-size: 16px;
+	color: #555;
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.pagination button {
+	padding: 10px;
+	margin: 0 5px;
+	background-color: #007bff;
 	color: white;
 	border: none;
-	border-radius: 5px;
+	border-radius: 4px;
 	cursor: pointer;
 }
 
-.login-button:hover {
-	background-color: #218838;
+.pagination button:disabled {
+	background-color: #cccccc;
+	cursor: not-allowed;
+}
+
+.pagination span {
+	padding: 10px;
+	font-size: 16px;
+	align-self: center;
 }

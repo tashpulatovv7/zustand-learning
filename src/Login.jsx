@@ -1,46 +1,79 @@
+import { useMutation } from '@tanstack/react-query';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import useStore from './store';
+
+const loginUser = async credentials => {
+	const mockUser = {
+		email: 'test@gmail.com',
+		password: 'pass1111',
+	};
+
+	if (credentials.email === mockUser.email && credentials.password === mockUser.password) {
+		return { success: true, message: 'Login successful!' };
+	} else {
+		throw new Error('Invalid email or password');
+	}
+};
 
 const LoginPage = () => {
-	const [username, setUsername] = useState('');
+	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const { setIsLoggedIn } = useStore();
-	const navigate = useNavigate();
 
-	const handleLogin = e => {
+	const mutation = useMutation({
+		mutationFn: loginUser,
+		onSuccess: data => {
+			console.log('Login successful:', data);
+		},
+		onError: error => {
+			console.log('Login failed:', error);
+		},
+	});
+
+	const handleSubmit = e => {
 		e.preventDefault();
-
-		if (username === 'test' && password === '1111') {
-			setIsLoggedIn(true);
-			navigate('/');
-		} else {
-			alert('Invalid credentials');
-		}
+		mutation.mutate({ email, password });
 	};
 
 	return (
-		<div className='container'>
-			<h1 className='title'>Login</h1>
-			<form onSubmit={handleLogin} className='login-form'>
-				<input
-					type='text'
-					placeholder='Username'
-					value={username}
-					onChange={e => setUsername(e.target.value)}
-					className='input-field'
-				/>
-				<input
-					type='password'
-					placeholder='Password'
-					value={password}
-					onChange={e => setPassword(e.target.value)}
-					className='input-field'
-				/>
-				<button type='submit' className='login-button'>
-					Login
-				</button>
-			</form>
+		<div className='login-page'>
+			<div className='login-container'>
+				<h1>Login</h1>
+				<form onSubmit={handleSubmit} className='login-form'>
+					<div className='input-group'>
+						<label htmlFor='email'>Email</label>
+						<input
+							type='email'
+							id='email'
+							value={email}
+							onChange={e => setEmail(e.target.value)}
+							required
+							placeholder='Enter your email'
+						/>
+					</div>
+					<div className='input-group'>
+						<label htmlFor='password'>Password</label>
+						<input
+							type='password'
+							id='password'
+							value={password}
+							onChange={e => setPassword(e.target.value)}
+							required
+							placeholder='Enter your password'
+						/>
+					</div>
+					<button
+						type='submit'
+						className='login-btn'
+						disabled={mutation.isLoading}
+					>
+						{mutation.isLoading ? 'Logging in...' : 'Login'}
+					</button>
+					{mutation.isError && (
+						<div className='error-message'>
+							Error: {mutation.error.message}
+						</div>
+					)}
+				</form>
+			</div>
 		</div>
 	);
 };
