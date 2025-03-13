@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import AddProduct from './adding/AddProduct';
+import AddProduct from './adding/Addproduct';
 import Cart from './basket/Basket';
 import Header from './Header';
 import LoginPage from './Login';
