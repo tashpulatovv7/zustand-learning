@@ -1,36 +1,38 @@
 import { useMutation } from '@tanstack/react-query';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
+import API from './utils/API';
+import useStore from './store';
 
-const loginUser = async credentials => {
-	const mockUser = {
-		email: 'test@gmail.com',
-		password: 'pass1111',
-	};
-
-	if (credentials.email === mockUser.email && credentials.password === mockUser.password) {
-		return { success: true, message: 'Login successful!' };
-	} else {
-		throw new Error('Invalid email or password');
+const loginUser = async (credentials) => {
+	try {
+		const response = await API.post('/auth/login', credentials);
+		return response.data;
+	} catch (error) {
+		throw new Error(error.response?.data?.message || 'Login failed');
 	}
 };
 
 const LoginPage = () => {
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+	const [username, setUsername] = useState('emilys');
+	const [password, setPassword] = useState('emilyspass');
+	const navigate = useNavigate(); 
+	const { login } = useStore(); 
 
 	const mutation = useMutation({
 		mutationFn: loginUser,
-		onSuccess: data => {
-			console.log('Login successful:', data);
+		onSuccess: (data) => {
+			login(data); 
+			navigate('/'); 
 		},
-		onError: error => {
-			console.log('Login failed:', error);
+		onError: (error) => {
+			console.log('Login failed:', error.message);
 		},
 	});
 
-	const handleSubmit = e => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
-		mutation.mutate({ email, password });
+		mutation.mutate({ username, password });
 	};
 
 	return (
@@ -39,14 +41,14 @@ const LoginPage = () => {
 				<h1>Login</h1>
 				<form onSubmit={handleSubmit} className='login-form'>
 					<div className='input-group'>
-						<label htmlFor='email'>Email</label>
+						<label htmlFor='username'>Username</label>
 						<input
-							type='email'
-							id='email'
-							value={email}
-							onChange={e => setEmail(e.target.value)}
+							type='text'
+							id='username'
+							value={username}
+							onChange={(e) => setUsername(e.target.value)}
 							required
-							placeholder='Enter your email'
+							placeholder='Enter your username'
 						/>
 					</div>
 					<div className='input-group'>
@@ -55,7 +57,7 @@ const LoginPage = () => {
 							type='password'
 							id='password'
 							value={password}
-							onChange={e => setPassword(e.target.value)}
+							onChange={(e) => setPassword(e.target.value)}
 							required
 							placeholder='Enter your password'
 						/>
